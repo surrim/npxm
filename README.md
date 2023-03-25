@@ -1,10 +1,10 @@
 # NPXM (nginx, PHP, Xdebug, MariaDB)
 
-![docker](https://img.shields.io/badge/Docker-compose-brightgreen.svg)
-![php](https://img.shields.io/badge/PHP_FPM-latest-brightgreen.svg)
-![xdebug](https://img.shields.io/badge/Xdebug-latest-brightgreen.svg)
-![nginx](https://img.shields.io/badge/nginx-latest-brightgreen.svg)
-![mariadb](https://img.shields.io/badge/MariaDB-latest-brightgreen.svg)
+![docker](https://img.shields.io/badge/Docker-compose-brightgreen.svg)  
+![php](https://img.shields.io/badge/PHP_FPM-latest-brightgreen.svg)  
+![xdebug](https://img.shields.io/badge/Xdebug-latest-brightgreen.svg)  
+![nginx](https://img.shields.io/badge/nginx-latest-brightgreen.svg)  
+![mariadb](https://img.shields.io/badge/MariaDB-latest-brightgreen.svg)  
 ![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-latest-brightgreen.svg)
 
 I created this Docker Compose setup for software developers who want to use the latest software similar to Fedora Linux.  
@@ -17,12 +17,12 @@ Main goals:
 - ✅ Accessible and documented configuration files
 - ✅ Working Xdebug
 - ✅ Colorful bash (`PS1`) , including some tweaks
-  - `ll` = `ls -lah``
-  - ``..` = `cd ..`
-  - `~/fix-permissions.sh` to set permissions to `1000:www-data`
+   - `ll` = `ls -lah`
+   - `..` = `cd ..`
+   - `~/fix-permissions.sh` to set permissions to `1000:www-data`
 
 - ✅ Useful extensions and tools like `zip`, `git`, `gd`, `vim`, `opcache`
-- ✅ Working `$_SERVER['PATH_INFO']` for `nginx` (e.g.: https://example.com/foo.php/any/path)
+- ✅ Working `$_SERVER['PATH_INFO']` for `nginx` (e.g.: [https://localhost/foo.php/any/path](https://localhost/foo.php/any/path))
 
 I know that using `latest` is not the best practice in the Docker world because you want to ensure a working version. I want to make sure that I don't have to pull up versions every week and that my code is working with the latest software.
 
@@ -36,7 +36,7 @@ docker compose up
 
 The first time takes much longer because my `php-fpm` has to be build first.
 
-Afterwards you can visit the website on http://localhost. `phpMyAdmin` is available as http://localhost:4000
+Afterwards you can visit the website on [http://localhost](http://localhost). `phpMyAdmin` is available as [http://localhost:4000](http://localhost:4000)
 
 To enable Xdebug, install a browser plugin to trigger step debugging. I use Firefox and `Xdebug Starter`, `IDE key` has to match your IDE configuration, or just leave everything blank.
 
@@ -56,7 +56,7 @@ Anyway, in the past there were "only" HTML and PHP files, today it can be anythi
 
 ### PHP (`config/php-overrides.ini`)
 
-These are various settings (common `PHP`, `Xdebug`, `OPcache`). If you miss something, please send a request. If it's reasonable and universal, I will update it and support is very welcome ❤️
+These are various settings (common `PHP`, `Xdebug`, `OPcache`). If you miss something, please send a request. If it's reasonable and universal, I will update it... and support is very welcome ❤️
 
 ### php-fpm permissions script (`config/fix-permissions.sh`)
 
@@ -73,7 +73,7 @@ After starting `docker compose up` you can use something like this to connect to
 docker exec -it $(docker ps --filter name=-php-fpm --latest --quiet) bash
 ```
 
-If you want less/more extensions, please update the Dockerfile and test the commands in the container beforehand. To restart the php-fpm container you can use
+If you want less/more extensions, please update the php-fpm Dockerfile and test the commands in the container beforehand. To restart the php-fpm container you can use
 
 ```bash
 docker restart $(docker ps --filter name=-php-fpm --latest --quiet)
