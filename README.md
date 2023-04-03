@@ -1,9 +1,9 @@
 # NPXM (nginx, PHP, Xdebug, MariaDB)
 
 ![docker](https://img.shields.io/badge/Docker-compose-brightgreen.svg)  
+![nginx](https://img.shields.io/badge/nginx-latest-brightgreen.svg)  
 ![php](https://img.shields.io/badge/PHP_FPM-latest-brightgreen.svg)  
 ![xdebug](https://img.shields.io/badge/Xdebug-latest-brightgreen.svg)  
-![nginx](https://img.shields.io/badge/nginx-latest-brightgreen.svg)  
 ![mariadb](https://img.shields.io/badge/MariaDB-latest-brightgreen.svg)  
 ![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-latest-brightgreen.svg)
 
@@ -62,6 +62,10 @@ These are various settings (common `PHP`, `Xdebug`, `OPcache`). If you miss some
 
 This script is mounted as `/root/fix-permissions.sh` and can be used to update the permissions and user/groups of the `/app` directory. Using `sudo chown/chmod ...` on the host system was a mess and the `www-data` user/group id might differ on the host.
 If you have any better solution, please let me know.
+
+### MariaDB import (`config/initdb.d/`)
+
+You can put import files into this directory which is mapped to [`/docker-entrypoint-initdb.d`](https://hub.docker.com/_/mariadb/). Shell scripts and (compressed) SQL files will be executed when you start the container the first time.
 
 ## Docker php-fpm image (`docker-images/php-fpm`)
 
