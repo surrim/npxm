@@ -51,8 +51,7 @@ ADD --chmod=755 https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli
 
 # vim
-RUN apt-get install -y \
-		vim
+RUN apt-get install -y vim
 
 # xdebug
 RUN pecl install xdebug \
