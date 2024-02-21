@@ -45,8 +45,7 @@ RUN apt-get install -y libicu-dev \
 RUN docker-php-ext-install -j$(nproc) opcache
 
 # phpunit
-RUN curl -#L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
-RUN chmod +x /usr/local/bin/phpunit
+ADD --chmod=755 https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
 
 # pdo and mysqli
 RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli
