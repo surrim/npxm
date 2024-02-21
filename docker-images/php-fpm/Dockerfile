@@ -30,11 +30,12 @@ RUN apt-get install -y \
 	&& docker-php-ext-install -j$(nproc) gmp
 
 # imagick
-RUN apt-get install -y \
-		libmagickwand-dev \
-		imagemagick \
-	&& yes '' | pecl install imagick \
-	&& docker-php-ext-enable imagick
+#RUN apt-get install -y \
+#		libmagickwand-dev \
+#		imagemagick \
+#		wget \
+#	&& yes '' | pecl install imagick \
+#	&& docker-php-ext-enable imagick
 
 # intl
 RUN docker-php-ext-install -j$(nproc) intl
