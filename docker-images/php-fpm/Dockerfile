@@ -38,7 +38,8 @@ RUN apt-get install -y \
 #	&& docker-php-ext-enable imagick
 
 # intl
-RUN docker-php-ext-install -j$(nproc) intl
+RUN apt-get install -y libicu-dev \
+	&& docker-php-ext-install -j$(nproc) intl
 
 # opcache
 RUN docker-php-ext-install -j$(nproc) opcache
