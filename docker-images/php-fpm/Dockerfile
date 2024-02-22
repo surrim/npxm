@@ -1,8 +1,8 @@
-FROM php:fpm
+FROM docker.io/library/php:fpm
 WORKDIR /app
 
 COPY bashrc /root/.bashrc
-COPY --from=composer /usr/bin/composer /usr/local/bin/
+COPY --from=docker.io/library/composer /usr/bin/composer /usr/local/bin/
 
 RUN apt-get update
 

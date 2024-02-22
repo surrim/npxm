@@ -1,41 +1,41 @@
 version: "3.9"
 services:
   nginx:
-    image: nginx
+    image: docker.io/library/nginx
     depends_on:
       - php-fpm
       - mariadb
     volumes:
-      - "./app/:/app/"
-      - "./config/nginx.conf:/etc/nginx/conf.d/default.conf"
+      - "./app/:/app/:z"
+      - "./config/nginx.conf:/etc/nginx/conf.d/default.conf:z"
     working_dir: /app
     ports:
-      - "80:80"
+      - "8080:80"
 
   php-fpm:
     build: docker-images/php-fpm
     volumes:
-      - "./app/:/app/"
-      - "./config/php-overrides.ini:/usr/local/etc/php/conf.d/php-overrides.ini"
-      - "./config/fix-permissions.sh:/root/fix-permissions.sh"
+      - "./app/:/app/:z"
+      - "./config/php-overrides.ini:/usr/local/etc/php/conf.d/php-overrides.ini:z"
+      - "./config/fix-permissions.sh:/root/fix-permissions.sh:z"
     working_dir: /app
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   mariadb:
-    image: mariadb
+    image: docker.io/library/mariadb
     environment:
       MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD}"
       MARIADB_DATABASE: "${MARIADB_DATABASE}"
       MARIADB_USER: "${MARIADB_USER}"
       MARIADB_PASSWORD: "${MARIADB_PASSWORD}"
     volumes:
-      - "./config/initdb.d/:/docker-entrypoint-initdb.d/"
+      - "./config/initdb.d/:/docker-entrypoint-initdb.d/:z"
     ports:
       - "3306:3306"
 
   pma:
-    image: phpmyadmin
+    image: docker.io/library/phpmyadmin
     depends_on:
       - mariadb
     environment:
