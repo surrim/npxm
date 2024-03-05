@@ -15,6 +15,7 @@ Main goals:
 - ✅ Simple environment with Nginx, PHP, Xdebug and MariaDB
 - ✅ phpMyAdmin for easy database import and exports
 - ✅ Accessible and documented configuration files
+- ✅ Podman support
 - ✅ Working Xdebug
 - ✅ Colorful bash (`PS1`) , including some tweaks
    - `ll` = `ls -lah`
@@ -36,7 +37,7 @@ docker compose up
 
 The first time takes much longer because my `php-fpm` has to be build first.
 
-Afterwards you can visit the website on [http://localhost](http://localhost). `phpMyAdmin` is available as [http://localhost:4000](http://localhost:4000)
+Afterwards you can visit the website on [http://localhost:8080](http://localhost:8080). `phpMyAdmin` is available as [http://localhost:4000](http://localhost:4000)
 
 To enable Xdebug, install a browser plugin to trigger step debugging. I use Firefox and `Xdebug Starter`, `IDE key` has to match your IDE configuration, or just leave everything blank.
 
